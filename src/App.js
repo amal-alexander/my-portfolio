@@ -13,6 +13,8 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AllProjects from "./pages/AllProjects";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 // Components
 import { ErrorBoundary } from "react-error-boundary";
 import AppFallback from "./components/AppFallback";
@@ -132,6 +134,8 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/All-Projects" element={<AllProjects />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer mode={footerTheme} />

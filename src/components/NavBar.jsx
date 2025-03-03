@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import defaultLogo from "../images/defaultNavLogo.svg";
 // Components
 import { Link as ScrollLink } from "react-scroll";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav as BootstrapNav, Navbar } from "react-bootstrap";
 import ThemeToggle from "./ThemeToggle";
 
 // #region constants
@@ -146,6 +146,47 @@ const StyledDiv = styled.div`
     }
   }
 `;
+
+const Nav = styled.div`
+  background-color: ${({ theme }) => theme.card_light};
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  @media screen and (max-width: 960px) {
+    transition: 0.8s all ease;
+  }
+`;
+
+const NavItems = styled.ul`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 0;
+  list-style: none;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const NavLink = styled.a`
+  color: ${({ theme }) => theme.text_primary};
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+  }
+`;
 // #endregion
 
 // #region component
@@ -187,11 +228,11 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
             onClick={() => setisExpanded(!isExpanded)}
           />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav navbarScroll className="me-auto">
+            <BootstrapNav navbarScroll className="me-auto">
               {pathname === "/"
                 ? navLinks.to.map((el) => {
                     return (
-                      <Nav.Item key={el.id}>
+                      <BootstrapNav.Item key={el.id}>
                         <ScrollLink
                           to={el.to}
                           spy={true}
@@ -205,12 +246,12 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                         >
                           {el.name}
                         </ScrollLink>
-                      </Nav.Item>
+                      </BootstrapNav.Item>
                     );
                   })
                 : navLinks.routes.map((el) => {
                     return (
-                      <Nav.Item key={el.id}>
+                      <BootstrapNav.Item key={el.id}>
                         <Link
                           to={el.route}
                           className={
@@ -226,10 +267,15 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                         >
                           {el.name}
                         </Link>
-                      </Nav.Item>
+                      </BootstrapNav.Item>
                     );
                   })}
-            </Nav>
+              <BootstrapNav.Item>
+                <Link to="/blog" className="nav-link">
+                  Blog
+                </Link>
+              </BootstrapNav.Item>
+            </BootstrapNav>
             <Nav>
               <ThemeToggle
                 closeDelay={closeDelay}
