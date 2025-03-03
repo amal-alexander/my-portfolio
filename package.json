@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "private": true,
   "dependencies": {
+    "@iconify/react": "^5.2.0",
     "@reduxjs/toolkit": "^2.5.0",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
