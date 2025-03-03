@@ -10,7 +10,11 @@ import { Link, useLocation } from "react-router-dom";
 import defaultLogo from "../images/defaultNavLogo.svg";
 // Components
 import { Link as ScrollLink } from "react-scroll";
+
 import { Container, Nav as BootstrapNav, Navbar } from "react-bootstrap";
+
+import { Container, Nav, Navbar } from "react-bootstrap";
+
 import ThemeToggle from "./ThemeToggle";
 
 // #region constants
@@ -147,6 +151,7 @@ const StyledDiv = styled.div`
   }
 `;
 
+
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.card_light};
   height: 80px;
@@ -187,6 +192,8 @@ const NavLink = styled.a`
     color: ${({ theme }) => theme.primary};
   }
 `;
+
+
 // #endregion
 
 // #region component
@@ -228,11 +235,19 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
             onClick={() => setisExpanded(!isExpanded)}
           />
           <Navbar.Collapse id="responsive-navbar-nav">
+
             <BootstrapNav navbarScroll className="me-auto">
               {pathname === "/"
                 ? navLinks.to.map((el) => {
                     return (
                       <BootstrapNav.Item key={el.id}>
+
+            <Nav navbarScroll className="me-auto">
+              {pathname === "/"
+                ? navLinks.to.map((el) => {
+                    return (
+                      <Nav.Item key={el.id}>
+
                         <ScrollLink
                           to={el.to}
                           spy={true}
@@ -246,12 +261,20 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                         >
                           {el.name}
                         </ScrollLink>
+
                       </BootstrapNav.Item>
+
+                      </Nav.Item>
+
                     );
                   })
                 : navLinks.routes.map((el) => {
                     return (
+
                       <BootstrapNav.Item key={el.id}>
+
+                      <Nav.Item key={el.id}>
+
                         <Link
                           to={el.route}
                           className={
@@ -267,6 +290,7 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                         >
                           {el.name}
                         </Link>
+
                       </BootstrapNav.Item>
                     );
                   })}
@@ -276,6 +300,12 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                 </Link>
               </BootstrapNav.Item>
             </BootstrapNav>
+
+                      </Nav.Item>
+                    );
+                  })}
+            </Nav>
+
             <Nav>
               <ThemeToggle
                 closeDelay={closeDelay}
