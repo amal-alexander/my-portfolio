@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-
 const PostContainer = styled(Container)`
   max-width: 800px;
   padding: 50px 20px;
