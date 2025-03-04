@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import BlogCard from './BlogCard';
-import { Container } from '../styles/GlobalStyles';
 import AdSense from 'react-adsense';
 
 const BlogSection = styled.section`
